@@ -1,14 +1,22 @@
 import Jeremy from "./images/image-jeremy.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Card from "./components/Card";
-import { WorkImg, StudyImg } from "./images";
+import IntroCard from "./components/IntroCard";
+import {
+  WorkImg,
+  PlayImg,
+  SelfCareImg,
+  SocialImg,
+  StudyImg,
+  ExerciseImg,
+} from "./images";
 import { data } from "./data";
 
 export default function App() {
   const [timeSpan, setTimeSpan] = useState({
-    daily: false,
+    daily: true,
     weekly: false,
-    monthly: true,
+    monthly: false,
   });
   const [currentTime, setCurrentTime] = useState("daily");
   const handleClick = (time) => {
@@ -26,56 +34,58 @@ export default function App() {
     setTimeSpan(newTimeSpan);
   };
   return (
-    <div className="bg-neutral-veryDarkBlue w-full h-auto grid gap-5 [&>*]:mx-auto [&>*]:rounded-xl [&>*]:overflow-hidden pt-5">
-      <div className="w-[327px] h-[203px] bg-neutral-darkBlue">
-        <div className="bg-primary-blue w-full h-[60%] rounded-xl flex justify-center items-center gap-3">
-          <div className="w-[20%]">
-            <img className="w-full" src={Jeremy} alt="" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-[15px] leading-[18px] font-normal text-neutral-paleBlue">
-              Report for
-            </span>
-            <span className="text-[24px] text-white leading-7 font-light">
-              Jeremy Robson
-            </span>
-          </div>
-        </div>
-        <div className="w-full h-[40%] flex justify-around items-center text-neutral-saturatedBlue text-[18px] [&>*]:hover:cursor-pointer">
-          <span
-            className={
-              timeSpan.daily ? "text-white" : "text-neutral-saturatedBlue"
-            }
-            onClick={() => handleClick("daily")}
-          >
-            Daily
-          </span>
-          <span
-            className={
-              timeSpan.weekly ? "text-white" : "text-neutral-saturatedBlue"
-            }
-            onClick={() => handleClick("weekly")}
-          >
-            Weekly
-          </span>
-          <span
-            className={
-              timeSpan.monthly ? "text-white" : "text-neutral-saturatedBlue"
-            }
-            onClick={() => handleClick("monthly")}
-          >
-            Monthly
-          </span>
-        </div>
+    <div className="flex justify-center items-center h-auto lg:h-screen bg-neutral-veryDarkBlue">
+      <div className=" w-full lg:h-[75%] grid lg:grid-cols-4 lg:grid-rows-2 gap-8 [&>*]:m-auto [&>*]:rounded-xl [&>*]:overflow-hidden py-5">
+        <IntroCard handleClick={handleClick} timeSpan={timeSpan} />
+        <Card
+          currentTime={currentTime}
+          labor={data[0].title}
+          current={data[0].timeframes[currentTime].current}
+          previous={data[0].timeframes[currentTime].previous}
+          bgColor="bg-primary-lightRed1"
+          BgImage={WorkImg}
+        />
+        <Card
+          currentTime={currentTime}
+          labor={data[1].title}
+          current={data[1].timeframes[currentTime].current}
+          previous={data[1].timeframes[currentTime].previous}
+          bgColor="bg-primary-softBlue"
+          BgImage={PlayImg}
+        />
+        <Card
+          currentTime={currentTime}
+          labor={data[2].title}
+          current={data[2].timeframes[currentTime].current}
+          previous={data[2].timeframes[currentTime].previous}
+          bgColor="bg-primary-lightRed2"
+          BgImage={StudyImg}
+        />
+        <Card
+          currentTime={currentTime}
+          labor={data[3].title}
+          current={data[3].timeframes[currentTime].current}
+          previous={data[3].timeframes[currentTime].previous}
+          bgColor="bg-primary-limeGreen"
+          BgImage={ExerciseImg}
+        />
+        <Card
+          currentTime={currentTime}
+          labor={data[4].title}
+          current={data[4].timeframes[currentTime].current}
+          previous={data[4].timeframes[currentTime].previous}
+          bgColor="bg-primary-violet"
+          BgImage={SocialImg}
+        />
+        <Card
+          currentTime={currentTime}
+          labor={data[5].title}
+          current={data[5].timeframes[currentTime].current}
+          previous={data[5].timeframes[currentTime].previous}
+          bgColor="bg-primary-softOrange"
+          BgImage={SelfCareImg}
+        />
       </div>
-      <Card
-        currentTime={currentTime}
-        labor={data[0].title}
-        current={data[0].timeframes[currentTime].current}
-        previous={data[0].timeframes[currentTime].previous}
-        bgColor="primary-lightRed1"
-        BgImage={WorkImg}
-      />
     </div>
   );
 }

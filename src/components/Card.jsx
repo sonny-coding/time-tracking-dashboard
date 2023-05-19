@@ -1,9 +1,18 @@
+import { useState } from "react";
 import { EllipsisImg } from "../images";
 
-const Card = ({ current, previous, bgColor, BgImage, labor }) => {
+const Card = ({ current, previous, bgColor, BgImage, labor, currentTime }) => {
+  //   let [displayText, setDisplayText] = useState("Today");
+  //   if (current === "daily") {
+  //     setDisplayText("Today");
+  //   } else if (current === "weekly") {
+  //     setDisplayText("This Week");
+  //   } else if (current === "monthly") {
+  //     setDisplayText("This month");
+  //   }
   return (
     <div
-      className={`w-[327px] h-[160px] flex flex-col justify-end relative bg-${bgColor}`}
+      className={`w-[327px] h-[160px] lg:h-full flex flex-col justify-end relative ${bgColor}`}
     >
       <BgImage className="absolute top-0 right-0" />
       <div className="w-full h-[72%] bg-neutral-darkBlue z-10 rounded-xl flex flex-col py-7 px-6">
@@ -13,12 +22,17 @@ const Card = ({ current, previous, bgColor, BgImage, labor }) => {
           </span>
           <EllipsisImg />
         </div>
-        <div className="w-full flex justify-between items-center text-center">
-          <span className="text-[32px] leading-[32px] font-light text-white">
+        <div className="w-full flex justify-between items-center lg:flex-col lg:items-start">
+          <span className="text-3xl lg:text-[56px] lg:leading-[66px] font-light text-white">
             {current} hours
           </span>
-          <span className="text-[15px] font-normal leading-[18px] text-neutral-paleBlue pt-1">
-            Last Week - {previous} hours
+          <span className="text-[15px] font-normal leading-[18px] text-neutral-paleBlue pt-2">
+            {currentTime === "daily"
+              ? "Today"
+              : currentTime === "weekly"
+              ? "This week"
+              : "This month"}{" "}
+            - {previous} hours
           </span>
         </div>
       </div>
