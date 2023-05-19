@@ -27,7 +27,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Time Tracking Dashboard](https://github.com/sonny-coding/time-tracking-dashboard)
-- Live Site URL: [Vercel]()
+- Live Site URL: [Vercel](https://time-tracking-dashboard-delta-one.vercel.app/)
 
 ### Built with
 

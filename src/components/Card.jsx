@@ -12,7 +12,7 @@ const Card = ({ current, previous, bgColor, BgImage, labor, currentTime }) => {
   //   }
   return (
     <div
-      className={`w-[327px] h-[160px] lg:h-full flex flex-col justify-end relative ${bgColor}`}
+      className={`w-[327px] lg:w-full h-[160px] lg:h-full flex flex-col justify-end relative ${bgColor}`}
     >
       <BgImage className="absolute top-0 right-0" />
       <div className="w-full h-[72%] bg-neutral-darkBlue z-10 rounded-xl flex flex-col py-7 px-6">

@@ -3,7 +3,7 @@ import Jeremy from "../images/image-jeremy.png";
 
 const IntroCard = ({ timeSpan, handleClick }) => {
   return (
-    <div className="w-[327px] h-[203px] bg-neutral-darkBlue lg:row-span-2 lg:h-full">
+    <div className="w-[327px] lg:w-full h-[203px] bg-neutral-darkBlue lg:row-span-2 lg:h-full">
       <div className="bg-primary-blue w-full h-[60%] rounded-xl flex justify-center items-center lg:flex-col lg:items-start lg:justify-start gap-3 lg:gap-6 lg:p-5">
         <div className="w-[20%] lg:w-[30%]">
           <img className="w-full border-4 rounded-full" src={Jeremy} alt="" />

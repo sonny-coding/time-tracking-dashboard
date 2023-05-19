@@ -34,7 +34,7 @@ export default function App() {
     setTimeSpan(newTimeSpan);
   };
   return (
-    <div className="flex justify-center items-center h-auto lg:h-screen bg-neutral-veryDarkBlue">
+    <div className="flex justify-center items-center h-auto lg:h-screen bg-neutral-veryDarkBlue lg:px-2">
       <div className=" w-full lg:h-[75%] grid lg:grid-cols-4 lg:grid-rows-2 gap-8 [&>*]:m-auto [&>*]:rounded-xl [&>*]:overflow-hidden py-5">
         <IntroCard handleClick={handleClick} timeSpan={timeSpan} />
         <Card
