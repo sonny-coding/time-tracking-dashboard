@@ -1,7 +1,8 @@
 import Jeremy from "./images/image-jeremy.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./components/Card";
 import { WorkImg, StudyImg } from "./images";
+import { data } from "./data";
 
 export default function App() {
   const [timeSpan, setTimeSpan] = useState({
@@ -9,16 +10,19 @@ export default function App() {
     weekly: false,
     monthly: true,
   });
+  const [currentTime, setCurrentTime] = useState("daily");
   const handleClick = (time) => {
     let newTimeSpan = {};
     for (const key in timeSpan) {
       if (key === time) {
+        setCurrentTime(time);
         newTimeSpan[key] = true;
       } else {
         newTimeSpan[key] = false;
       }
     }
-    console.log(newTimeSpan);
+    // console.log(newTimeSpan);
+    console.log(currentTime);
     setTimeSpan(newTimeSpan);
   };
   return (
@@ -65,9 +69,10 @@ export default function App() {
         </div>
       </div>
       <Card
-        labor="work"
-        current={32}
-        previous={36}
+        currentTime={currentTime}
+        labor={data[0].title}
+        current={data[0].timeframes[currentTime].current}
+        previous={data[0].timeframes[currentTime].previous}
         bgColor="primary-lightRed1"
         BgImage={WorkImg}
       />
